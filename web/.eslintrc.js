@@ -32,7 +32,9 @@ module.exports = {
 		'max-len': ['error', { code: 120, ignoreComments: true }],
 		'react/destructuring-assignment': ['off'], // disable forse restructuring assignment (props.status) => const {status} = props
 		'react/prop-types': ['off'],
-		'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }]
+		'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
+		'prefer-template': ['off'], // string templates
+		'no-console': ['off']
 	}
 };
 

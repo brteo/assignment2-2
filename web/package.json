@@ -1,13 +1,15 @@
 {
-  "name": "assignment2-2",
-  "version": "0.1.0",
+  "name": "assignment2-frontend",
+  "version": "0.9.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.15.4",
+    "axios": "^0.21.1",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
