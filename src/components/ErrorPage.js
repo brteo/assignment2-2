@@ -6,7 +6,7 @@ import { Result, Button } from 'antd';
 const ErrorPage = props => {
 	return (
 		<Result
-			status={props.status}
+			status="error"
 			title={props.status}
 			subTitle="Sorry, the page you visited does not exist."
 			extra={
