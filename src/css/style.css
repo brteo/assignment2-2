@@ -1,0 +1,7 @@
+@import '~antd/dist/antd.css';
+
+.App-logo{height:120px}
+
+/*COMMON*/
+.fullpage {width: 100%;height: 100vh;}
+.fullpage > * {height: 100%;}

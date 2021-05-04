@@ -51,3 +51,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 - (DEV) eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
 - (DEV) prettier eslint-config-prettier eslint-plugin-prettier
+- moment [react-moment](https://www.npmjs.com/package/react-moment)
+- [antd](https://ant.design/docs/react/introduce)
+- [router](https://reactrouter.com/web/guides/quick-start)
+- [props-type](https://it.reactjs.org/docs/typechecking-with-proptypes.html)
