@@ -12,19 +12,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// trim all incoming post body
-/*
+// trim all incoming post body --> da migliorare in funzionale puro
 app.use((req, res, next) => {
-	Object.keys(req.body).map(key => {
-		if (typeof req.body[key] === 'string' || req.body[key] instanceof String)
-			return (req.body[key] = req.body[key].trim());
-	});
+	if (req.method === 'POST') {
+		// eslint-disable-next-line no-restricted-syntax
+		for (const [key, value] of Object.entries(req.body)) {
+			req.body[key] = value.trim();
+		}
+	}
 	next();
 });
-*/
 
 app.get('/', (req, res) => {
-	const response = { message: `Trains REST API!` };
+	const response = { message: `Trains RestAPI is live!` };
 	res.send(response);
 });
 
