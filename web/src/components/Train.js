@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Collapse, Skeleton, Typography, Space } from 'antd';
+import { FieldNumberOutlined } from '@ant-design/icons';
 
 import ErrorModal from './ErrorModal';
 import TrainTimeline from './TrainTimeline';
@@ -15,6 +16,7 @@ const Train = props => {
 	const [result, setResult] = useState(null);
 
 	const getRealTimeInfo = () => {
+		console.log('GO');
 		setLoading(true);
 		axios
 			.get(process.env.REACT_APP_ENDPOINT + 'trains/' + train.trainid, {
@@ -31,13 +33,25 @@ const Train = props => {
 			});
 	};
 
+	const onCollapse = key => {
+		if (key.length) {
+			getRealTimeInfo();
+		} else {
+			setResult(null);
+		}
+	};
+
 	const info = result ? (
 		<>
-			<Space>
+			<Space wrap>
 				<Text type="secondary">Ritardo</Text>
 				<Text type={result.ritardo > 0 ? 'danger' : 'success'}>{result.compRitardo[1]}</Text>
 				<Text type="secondary">Last Detection</Text>
-				<Text>{moment(result.oraUltimoRilevamento, 'x').fromNow()}</Text>
+				{result.oraUltimoRilevamento ? (
+					<Text>{moment(result.oraUltimoRilevamento, 'x').fromNow()}</Text>
+				) : (
+					<Text>-</Text>
+				)}
 			</Space>
 			<TrainTimeline stops={result.fermate} keyData={dataKey} />
 		</>
@@ -45,9 +59,15 @@ const Train = props => {
 		''
 	);
 
+	const title = (
+		<>
+			TRAIN <FieldNumberOutlined /> {train.trainid}
+		</>
+	);
+
 	return (
-		<Collapse onChange={getRealTimeInfo}>
-			<Panel header={train.trainid} key={dataKey}>
+		<Collapse onChange={onCollapse}>
+			<Panel header={title} key={dataKey}>
 				{loading ? <Skeleton active /> : info}
 			</Panel>
 		</Collapse>

@@ -18,24 +18,24 @@ const SolutionCard = props => {
 	);
 
 	return (
-		<Ribbon text={solution.idsolution} color="cyan">
+		<Ribbon text={solution.idsolution} color="magenta" className="card-ribbon">
 			<Card title={title}>
 				<Row gutter={[8, 8]}>
-					<Col xs={{ span: 24 }} md={{ span: 8 }}>
+					<Col xs={{ span: 24 }} lg={{ span: 8 }}>
 						<Space>
 							<ClockCircleOutlined />
 							<Text type="secondary">Departure time</Text>
 							<Moment format="DD/MM/YYYY HH:mm">{solution.departuretime}</Moment>
 						</Space>
 					</Col>
-					<Col xs={{ span: 24 }} md={{ span: 8 }}>
+					<Col xs={{ span: 24 }} lg={{ span: 8 }}>
 						<Space>
 							<ClockCircleOutlined />
 							<Text type="secondary">Arrival time</Text>
 							<Moment format="DD/MM/YYYY HH:mm">{solution.arrivaltime}</Moment>
 						</Space>
 					</Col>
-					<Col xs={{ span: 24 }} md={{ span: 8 }}>
+					<Col xs={{ span: 24 }} lg={{ span: 8 }}>
 						<Space>
 							<ClockCircleOutlined />
 							<Text type="secondary">Duration</Text>
