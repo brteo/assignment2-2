@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Layout, Tag, Typography } from 'antd';
+import { Layout, Typography } from 'antd';
 
 import Main from './Main';
 import ErrorPage from '../components/ErrorPage';
-import {} from 'antd/lib/layout/layout';
+import ApiCheck from '../components/ApiCheck';
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
@@ -14,8 +14,8 @@ const Routes = props => {
 		<BrowserRouter history={props.history}>
 			<Layout>
 				<Header>
-					<Title level={2}>Trains</Title>
-					<Tag color="blue">Assignment #02/2</Tag>
+					<Title level={3}>PCA - Ass #02/2</Title>
+					<ApiCheck />
 				</Header>
 				<Content className="content">
 					<Switch>

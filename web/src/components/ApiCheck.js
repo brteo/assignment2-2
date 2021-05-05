@@ -1,16 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Tag } from 'antd';
+import { CheckCircleOutlined, SyncOutlined, CloseCircleOutlined } from '@ant-design/icons';
 
 const APICheck = props => {
-	const [message, setMessage] = useState(false);
+	const [message, setMessage] = useState('Checking if Api is reachable...');
+	const [color, setColor] = useState('processing');
 
 	useEffect(() => {
-		axios.get(process.env.REACT_APP_ENDPOINT).then(res => {
-			setMessage(res.data.message);
-		});
+		setTimeout(() => {
+			axios
+				.get(process.env.REACT_APP_ENDPOINT)
+				.then(res => {
+					setMessage(res.data.message);
+					setColor('green');
+				})
+				.catch(err => {
+					setMessage('Api unreachable!');
+					setColor('red');
+				});
+		}, 1000);
 	}, []);
 
-	return <p>{message}</p>;
-};
+	let icon;
+	if (color === 'green') {
+		icon = <CheckCircleOutlined />;
+	} else if (color === 'red') {
+		icon = <CloseCircleOutlined />;
+	} else icon = <SyncOutlined spin />;
 
+	return (
+		<Tag icon={icon} color={color}>
+			{message}
+		</Tag>
+	);
+};
 export default APICheck;

@@ -1,8 +1,8 @@
 @import '~antd/dist/antd.css';
 
 .ant-layout-header{position: fixed;z-index: 1;width: 100%;padding:0 15px;}
-.ant-layout-header h2{color:#FFF;line-height: 64px;margin:0;padding:0;float:left;}
-.ant-layout-header .ant-tag{float:left;margin:23px 0 0 10px}
+.ant-layout-header h3{color:#FFF;margin:0;padding:0;float:left;line-height: 64px;font-size:14px;}
+.ant-layout-header .ant-tag{float:right;margin-top: 20px;}
 
 .content{margin-top:64px;padding:20px 15px;height: calc(100vh - 64px - 65px);}
 .content > * {height: 100%;}
@@ -10,6 +10,7 @@
 .footer{text-align: center;font-size: 0.8em;color:#999;}
 
 @media screen and (min-width: 768px) {
+  .ant-layout-header h3{font-size:24px;}
   .ant-layout-header{padding:0 30px}
   .content{padding:20px 30px;}
 }

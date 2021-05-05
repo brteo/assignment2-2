@@ -1,52 +1,17 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/display-name */
 import React, { useState } from 'react';
-import Moment from 'react-moment';
 import axios from 'axios';
-import { Button, Table } from 'antd';
+import { Skeleton, Space } from 'antd';
 
-import ApiCheck from '../components/ApiCheck';
 import ErrorModal from '../components/ErrorModal';
 import SolutionsForm from '../components/SolutionsForm';
+import SolutionCard from '../components/SolutionCard';
 
 const Home = props => {
 	const [loading, setLoading] = useState(false);
 	const [show, setShow] = useState(false);
 	const [results, setResults] = useState([]);
-	const columns = [
-		{
-			title: 'ID',
-			dataIndex: 'idsolution',
-			key: 'idsolution',
-			render: id => (
-				// eslint-disable-next-line no-use-before-define
-				<Button type="link" onClick={() => detailHandler(id)}>
-					{id}
-				</Button>
-			)
-		},
-		{
-			title: 'Origin',
-			dataIndex: 'origin',
-			key: 'origin'
-		},
-		{
-			title: 'Destination',
-			dataIndex: 'destination',
-			key: 'destination'
-		},
-		{
-			title: 'Departure',
-			dataIndex: 'departuretime',
-			key: 'departuretime',
-			render: time => <Moment format="DD/MM/YYYY HH:mm">{time}</Moment>
-		},
-		{
-			title: 'Arrival',
-			dataIndex: 'arrivaltime',
-			key: 'arrivaltime',
-			render: time => <Moment format="DD/MM/YYYY HH:mm">{time}</Moment>
-		}
-	];
 
 	const solutionSubmit = values => {
 		setLoading(true);
@@ -83,26 +48,25 @@ const Home = props => {
 			})
 			.catch(error => {
 				setLoading(false);
-				ErrorModal(error);
-			});
-	};
-
-	const detailHandler = id => {
-		axios
-			.get(process.env.REACT_APP_ENDPOINT + 'solutions/' + id)
-			.then(res => {
-				console.log(res);
-			})
-			.catch(error => {
+				setShow(false);
 				ErrorModal(error);
 			});
 	};
 
 	return (
 		<section>
-			<ApiCheck />
-			<SolutionsForm submit={solutionSubmit} />
-			{show ? <Table columns={columns} dataSource={results} /> : ''}
+			<SolutionsForm submit={solutionSubmit} loading={loading} />
+			<Space direction="vertical" style={{ width: '100%' }}>
+				{show ? (
+					loading ? (
+						<Skeleton active />
+					) : (
+						results.map(item => <SolutionCard key={item.idsolution} solution={item} />)
+					)
+				) : (
+					''
+				)}
+			</Space>
 		</section>
 	);
 };

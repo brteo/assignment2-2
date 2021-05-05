@@ -1,6 +1,8 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import moment from 'moment';
-import { Form, Input, Button, DatePicker, TimePicker } from 'antd';
+import { Form, Input, Button, DatePicker, TimePicker, Row, Col } from 'antd';
 
 const SolutionsForm = props => {
 	const dateFormat = 'DD/MM/YYYY';
@@ -17,8 +19,7 @@ const SolutionsForm = props => {
 		const cleanValues = Object.entries(values).reduce(
 			(p, [k, v]) => ({
 				...p,
-				// eslint-disable-next-line no-nested-ternary
-				[k]: k === 'date' ? moment(v).format(dateFormat) : k === 'time' ? moment(v).format(timeFormat) : v
+				[k]: k === 'date' ? moment(v).format(dateFormat) : k === 'time' ? moment(v).format(timeFormat) : v.trim()
 			}),
 			{}
 		);
@@ -27,24 +28,36 @@ const SolutionsForm = props => {
 	};
 
 	return (
-		<Form layout="inline" initialValues={initialValues} onFinish={onSubmit}>
-			<Form.Item name="from" rules={[{ required: true, message: 'Please input the origin station!' }]}>
-				<Input placeholder="From" />
-			</Form.Item>
-			<Form.Item name="to" rules={[{ required: true, message: 'Please input the destination station!' }]}>
-				<Input placeholder="To" />
-			</Form.Item>
-			<Form.Item name="date">
-				<DatePicker format={dateFormat} />
-			</Form.Item>
-			<Form.Item name="time">
-				<TimePicker format={timeFormat} />
-			</Form.Item>
-			<Form.Item>
-				<Button type="primary" htmlType="submit">
-					Search
-				</Button>
-			</Form.Item>
+		<Form initialValues={initialValues} onFinish={onSubmit}>
+			<Row gutter={[8, 8]}>
+				<Col xs={{ span: 24 }} md={{ span: 6 }}>
+					<Form.Item name="from" rules={[{ required: true, message: 'Please input the origin station!' }]}>
+						<Input placeholder="From" />
+					</Form.Item>
+				</Col>
+				<Col xs={{ span: 24 }} md={{ span: 6 }}>
+					<Form.Item name="to" rules={[{ required: true, message: 'Please input the destination station!' }]}>
+						<Input placeholder="To" />
+					</Form.Item>
+				</Col>
+				<Col xs={{ span: 12 }} md={{ span: 4 }}>
+					<Form.Item name="date">
+						<DatePicker format={dateFormat} style={{ width: '100%' }} />
+					</Form.Item>
+				</Col>
+				<Col xs={{ span: 12 }} md={{ span: 4 }}>
+					<Form.Item name="time">
+						<TimePicker format={timeFormat} style={{ width: '100%' }} />
+					</Form.Item>
+				</Col>
+				<Col xs={{ span: 24 }} md={{ span: 4 }}>
+					<Form.Item>
+						<Button type="primary" htmlType="submit" loading={props.loading} style={{ width: '100%' }}>
+							Search
+						</Button>
+					</Form.Item>
+				</Col>
+			</Row>
 		</Form>
 	);
 };
