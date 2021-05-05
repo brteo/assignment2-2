@@ -29,7 +29,7 @@ module.exports = {
 		'prettier/prettier': ['error'],
 		'react/react-in-jsx-scope': 'off', // suppress errors for missing 'import React' in files
 		'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }], // allow jsx syntax in js files
-		'max-len': ['error', { code: 120, ignoreComments: true }],
+		'max-len': ['error', { code: 140, ignoreComments: true }],
 		'react/destructuring-assignment': ['off'], // disable forse restructuring assignment (props.status) => const {status} = props
 		'react/prop-types': ['off'],
 		'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],

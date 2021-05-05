@@ -6,6 +6,8 @@ const cors = require('cors');
 const fs = require('fs');
 
 const app = express();
+const { errorMiddleware } = require('./lib/errors');
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,5 +35,7 @@ fs.readdirSync(path.join(__dirname, '/routes'))
 		const f = path.parse(file).name;
 		app.use(`/${f}`, require(`./routes/${f}`));
 	});
+
+app.use(errorMiddleware);
 
 app.listen(3000);

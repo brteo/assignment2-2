@@ -17,7 +17,7 @@ module.exports = {
 	plugins: ['prettier'],
 	rules: {
 		'prettier/prettier': ['error'],
-		'max-len': ['error', { code: 120, ignoreComments: true }],
+		'max-len': ['error', { code: 140, ignoreComments: true }],
 		'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
 		'prefer-template': ['off']
 	}
