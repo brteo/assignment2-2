@@ -13,19 +13,19 @@ const APICheck = props => {
 				.get(process.env.REACT_APP_ENDPOINT)
 				.then(res => {
 					setMessage(res.data.message);
-					setColor('green');
+					setColor('green-inverse');
 				})
 				.catch(err => {
 					setMessage('Api unreachable!');
-					setColor('red');
+					setColor('red-inverse');
 				});
 		}, 1000);
 	}, []);
 
 	let icon;
-	if (color === 'green') {
+	if (color === 'green-inverse') {
 		icon = <CheckCircleOutlined />;
-	} else if (color === 'red') {
+	} else if (color === 'red-inverse') {
 		icon = <CloseCircleOutlined />;
 	} else icon = <SyncOutlined spin />;
 

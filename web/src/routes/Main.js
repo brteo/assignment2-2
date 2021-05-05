@@ -33,22 +33,12 @@ const Home = props => {
 			.then(res => {
 				setLoading(false);
 				setShow(true);
-				setResults(
-					res.data.map(item => {
-						return {
-							key: item.idsolution,
-							idsolution: item.idsolution,
-							origin: item.origin,
-							destination: item.destination,
-							departuretime: item.departuretime,
-							arrivaltime: item.arrivaltime
-						};
-					})
-				);
+				setResults(res.data);
 			})
 			.catch(error => {
 				setLoading(false);
 				setShow(false);
+				setResults([]);
 				ErrorModal(error);
 			});
 	};

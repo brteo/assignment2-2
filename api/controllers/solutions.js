@@ -50,7 +50,6 @@ exports.getTrainSolutions = async (req, res, next) => {
 		const ret = await Promise.all(
 			result.data.map(async item => {
 				const obj = {};
-				obj.id = 'TEST';
 				obj.idsolution = item.idsolution;
 				obj.origin = item.origin;
 				obj.destination = item.destination;
