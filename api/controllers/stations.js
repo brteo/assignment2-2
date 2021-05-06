@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const axios = require('axios');
 
 const getRealTimeStationInfo = (type, station) => {
@@ -14,7 +15,25 @@ exports.getRealTimeStationArrivals = async (req, res, next) => {
 	try {
 		const result = await getRealTimeStationInfo('arrivi', req.params.id);
 
-		res.status(200).json(result.data);
+		const ret = result.data.map(item => {
+			const obj = {};
+			obj.numeroTreno = item.numeroTreno;
+			obj.categoria = item.categoria;
+			obj.compNumeroTreno = item.compNumeroTreno;
+			obj.origine = item.origine;
+			obj.codOrigine = item.codOrigine;
+			obj.binarioEffettivoArrivoCodice = item.binarioEffettivoArrivoCodice;
+			obj.binarioEffettivoArrivoDescrizione = item.binarioEffettivoArrivoDescrizione;
+			obj.binarioProgrammatoArrivoCodice = item.binarioProgrammatoArrivoCodice;
+			obj.binarioProgrammatoArrivoDescrizione = item.binarioProgrammatoArrivoDescrizione;
+			obj.orarioArrivo = item.orarioArrivo;
+			obj.ritardo = item.ritardo;
+			obj.compRitardo = item.compRitardo;
+
+			return obj;
+		});
+
+		res.status(200).json(ret);
 	} catch (error) {
 		next(error);
 	}
@@ -24,7 +43,25 @@ exports.getRealTimeStationDepartures = async (req, res, next) => {
 	try {
 		const result = await getRealTimeStationInfo('partenze', req.params.id);
 
-		res.status(200).json(result.data);
+		const ret = result.data.map(item => {
+			const obj = {};
+			obj.numeroTreno = item.numeroTreno;
+			obj.categoria = item.categoria;
+			obj.compNumeroTreno = item.compNumeroTreno;
+			obj.destinazione = item.destinazione;
+			obj.codOrigine = item.codOrigine;
+			obj.binarioEffettivoPartenzaCodice = item.binarioEffettivoPartenzaCodice;
+			obj.binarioEffettivoPartenzaDescrizione = item.binarioEffettivoPartenzaDescrizione;
+			obj.binarioProgrammatoPartenzaCodice = item.binarioProgrammatoPartenzaCodice;
+			obj.binarioProgrammatoPartenzaDescrizione = item.binarioProgrammatoPartenzaDescrizione;
+			obj.orarioPartenza = item.orarioPartenza;
+			obj.ritardo = item.ritardo;
+			obj.compRitardo = item.compRitardo;
+
+			return obj;
+		});
+
+		res.status(200).json(ret);
 	} catch (error) {
 		next(error);
 	}
