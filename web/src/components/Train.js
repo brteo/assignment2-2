@@ -16,7 +16,6 @@ const Train = props => {
 	const [result, setResult] = useState(null);
 
 	const getRealTimeInfo = () => {
-		console.log('GO');
 		setLoading(true);
 		axios
 			.get(process.env.REACT_APP_ENDPOINT + 'trains/' + train.trainid, {
@@ -65,8 +64,10 @@ const Train = props => {
 		</>
 	);
 
+	const disabled = train.error ? 'disabled' : 'enabled';
+
 	return (
-		<Collapse onChange={onCollapse}>
+		<Collapse onChange={onCollapse} collapsible={disabled}>
 			<Panel header={title} key={dataKey}>
 				{loading ? <Skeleton active /> : info}
 			</Panel>

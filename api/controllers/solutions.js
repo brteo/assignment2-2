@@ -2,15 +2,16 @@ const axios = require('axios');
 
 const getTrainInfo = async trains => {
 	const promises = trains.map(async train => {
-		const id = train.trainidentifier.split(' ').pop();
-
 		try {
+			const id = train.trainidentifier.split(' ').pop();
+
 			const result = await axios.get(
 				'http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/' + id,
 				{ withCredentials: true }
 			);
 
 			// 606 - BARI CENTRALE|606-S11119-1620165600000\n
+
 			const s = result.data.split('|').pop();
 			return {
 				trainidentifier: train.trainidentifier,
@@ -20,7 +21,7 @@ const getTrainInfo = async trains => {
 			};
 		} catch (err) {
 			return {
-				trainidentifier: train.trainidentifier,
+				trainid: train.trainidentifier,
 				error: err.message
 			};
 		}
