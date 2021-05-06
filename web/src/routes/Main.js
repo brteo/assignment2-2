@@ -10,12 +10,14 @@ import SolutionCard from '../components/SolutionCard';
 import Station from '../components/Station';
 
 const Home = props => {
+	const [isMobile, setMobile] = useState(false);
+
 	const [loading, setLoading] = useState(false);
 	const [show, setShow] = useState(false);
 	const [results, setResults] = useState([]);
-	const [stationVisible, setStationVisible] = useState(false);
+
 	const [station, setStation] = useState(null);
-	const [isMobile, setMobile] = useState(false);
+	const [stationVisible, setStationVisible] = useState(false);
 
 	useLayoutEffect(() => {
 		const checkMobile = () => {
@@ -59,34 +61,13 @@ const Home = props => {
 	};
 
 	const getStationInfo = (id, name) => {
+		setStation({ id, name });
 		setStationVisible(true);
-		setStation(null);
-		const ret = { id, name };
-
-		axios
-			.get(process.env.REACT_APP_ENDPOINT + 'stations/arrivals/' + id)
-			.then(arr => {
-				ret.arrivals = arr.data;
-				axios
-					.get(process.env.REACT_APP_ENDPOINT + 'stations/departures/' + id)
-					.then(dep => {
-						ret.departures = dep.data;
-						setStation(ret);
-					})
-					.catch(error => {
-						setStation(null);
-						ErrorModal(error);
-					});
-			})
-			.catch(error => {
-				setStation(null);
-				ErrorModal(error);
-			});
 	};
 
 	const onCloseStation = () => {
-		setStationVisible(false);
 		setStation(null);
+		setStationVisible(false);
 	};
 
 	return (
@@ -108,18 +89,14 @@ const Home = props => {
 				</Space>
 			</section>
 			<Drawer
-				title={station ? station.name : ''}
+				title={station && station.name ? station.name : ''}
 				placement="right"
 				visible={stationVisible}
 				onClose={onCloseStation}
 				mask={false}
 				width={isMobile ? '80%' : '50%'}
 			>
-				{!station ? (
-					<Skeleton active />
-				) : (
-					<Station stationId={station.id} arrivals={station.arrivals} departures={station.departures} />
-				)}
+				{station ? <Station stationId={station.id} /> : ''}
 			</Drawer>
 		</>
 	);
