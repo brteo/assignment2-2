@@ -7,6 +7,10 @@ const { Text } = Typography;
 const TrainTimeline = props => {
 	const { stops, dataKey } = props;
 
+	const stationHandler = (id, name) => {
+		props.stationHandler(id, name);
+	};
+
 	return (
 		<Timeline>
 			{stops.map(stop => (
@@ -14,7 +18,7 @@ const TrainTimeline = props => {
 					{stop.partenzaReale ? (
 						<>
 							<div className="mobile-block">
-								<Tag data-id={stop.id} color="green">
+								<Tag color="green" onClick={() => stationHandler(stop.id, stop.stazione)}>
 									{stop.stazione}
 								</Tag>
 							</div>
@@ -27,7 +31,9 @@ const TrainTimeline = props => {
 					) : (
 						<>
 							<div className="mobile-block">
-								<Tag data-id={stop.id}>{stop.stazione}</Tag>
+								<Tag data-id={stop.id} onClick={() => stationHandler(stop.id, stop.stazione)}>
+									{stop.stazione}
+								</Tag>
 							</div>
 							<Space wrap>
 								<Text type="secondary">leave at</Text>

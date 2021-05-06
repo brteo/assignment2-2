@@ -51,6 +51,7 @@ const SolutionCard = props => {
 						key={solution.idsolution + '-' + train.trainid}
 						dataKey={solution.idsolution + '-' + train.trainid}
 						train={train}
+						stationHandler={props.stationHandler}
 					/>
 				))}
 			</Card>

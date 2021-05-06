@@ -54,7 +54,7 @@ const Train = props => {
 					<Text>-</Text>
 				)}
 			</div>
-			<TrainTimeline stops={result.fermate} keyData={dataKey} />
+			<TrainTimeline stops={result.fermate} keyData={dataKey} stationHandler={props.stationHandler} />
 		</>
 	) : (
 		''

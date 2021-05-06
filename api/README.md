@@ -112,13 +112,9 @@ http://localhost:3000/stations/arrivals/S11119
     "binarioEffettivoArrivoDescrizione": null,
     "binarioProgrammatoArrivoCodice": null,
     "binarioProgrammatoArrivoDescrizione": "7",
+    "binario": "7",
     "orarioArrivo": 1620298200000,
     "ritardo": 0,
-    "compRitardo": [
-      "in orario",
-      "on time",
-      ...
-    ]
   },
   ...
 ]
@@ -145,13 +141,9 @@ http://localhost:3000/stations/departures/S11119
     "binarioEffettivoPartenzaDescrizione": null,
     "binarioProgrammatoPartenzaCodice": null,
     "binarioProgrammatoPartenzaDescrizione": "1",
+    "binario": "1",
     "orarioPartenza": 1620307140000,
-    "ritardo": 13,
-    "compRitardo": [
-      "ritardo 13 min.",
-      "delay 13 min.",
-      ...
-    ]
+    "ritardo": 13
   },
   ...
 ]
