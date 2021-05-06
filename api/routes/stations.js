@@ -3,6 +3,8 @@ const stations = require('../controllers/stations');
 
 const router = express.Router();
 
-router.get('/:id', stations.getRealTimeStationInfo);
+router.get('/arrivals/:id', stations.getRealTimeStationArrivals);
+
+router.get('/departures/:id', stations.getRealTimeStationDepartures);
 
 module.exports = router;

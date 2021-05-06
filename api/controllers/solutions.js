@@ -10,8 +10,7 @@ const getTrainInfo = async trains => {
 				{ withCredentials: true }
 			);
 
-			// 606 - BARI CENTRALE|606-S11119-1620165600000\n
-
+			// es response -> 606 - BARI CENTRALE|606-S11119-1620165600000\n
 			const s = result.data.split('|').pop();
 			return {
 				trainidentifier: train.trainidentifier,

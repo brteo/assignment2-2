@@ -1,11 +1,17 @@
 import React from 'react';
 import Moment from 'react-moment';
+import moment from 'moment';
 import { Timeline, Tag, Typography, Space } from 'antd';
 
 const { Text } = Typography;
 
 const TrainTimeline = props => {
 	const { stops, dataKey } = props;
+
+	const timestamp = new Date().toString().replace(/ *\([^)]*\) */g, '');
+	console.log(timestamp);
+
+	console.log('http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/arrivi/S01700/' + timestamp);
 
 	return (
 		<Timeline>
