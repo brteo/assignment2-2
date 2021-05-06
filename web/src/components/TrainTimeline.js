@@ -14,7 +14,9 @@ const TrainTimeline = props => {
 					{stop.partenzaReale ? (
 						<>
 							<div className="mobile-block">
-								<Tag color="green">{stop.stazione}</Tag>
+								<Tag data-id={stop.id} color="green">
+									{stop.stazione}
+								</Tag>
 							</div>
 							<Space wrap>
 								<Text type="secondary">left at</Text>
@@ -25,7 +27,7 @@ const TrainTimeline = props => {
 					) : (
 						<>
 							<div className="mobile-block">
-								<Tag>{stop.stazione}</Tag>
+								<Tag data-id={stop.id}>{stop.stazione}</Tag>
 							</div>
 							<Space wrap>
 								<Text type="secondary">leave at</Text>

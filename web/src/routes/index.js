@@ -14,7 +14,7 @@ const Routes = props => {
 		<BrowserRouter history={props.history}>
 			<Layout>
 				<Header>
-					<Title level={3}>PCA - Ass #02/2</Title>
+					<Title level={3}>PCD - Ass #02/2</Title>
 					<ApiCheck />
 				</Header>
 				<Content className="content">

@@ -1,16 +1,5 @@
 # FrontEnd
 
-## Packages
-
-- (DEV) eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
-- (DEV) prettier eslint-config-prettier eslint-plugin-prettier
-- moment [react-moment](https://www.npmjs.com/package/react-moment)
-- [antd](https://ant.design/docs/react/introduce)
-- [@ant-design/icons](https://ant.design/components/icon/)
-- [router](https://reactrouter.com/web/guides/quick-start)
-- [props-type](https://it.reactjs.org/docs/typechecking-with-proptypes.html)
-- [axios](https://www.npmjs.com/package/axios)
-
 ## Create-react-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -24,3 +13,14 @@ npm install -g create-react-app  # global install of CRA
 npm init react-app . --legacy-peer-deps # create CRA
 	# add flag --legacy-peer-deps with npm version > 7.0
 ```
+
+## Npm Packages
+
+- [moment](https://momentjs.com) [react-moment](https://www.npmjs.com/package/react-moment)
+- [antd](https://ant.design/docs/react/introduce)
+- [@ant-design/icons](https://ant.design/components/icon/)
+- [router](https://reactrouter.com/web/guides/quick-start)
+- [props-type](https://it.reactjs.org/docs/typechecking-with-proptypes.html)
+- [axios](https://www.npmjs.com/package/axios)
+- [DEV] eslint eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
+- [DEV] prettier eslint-config-prettier eslint-plugin-prettier
