@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import { Collapse, Skeleton, Typography } from 'antd';
+import { Collapse, Skeleton, Typography, Divider } from 'antd';
 import { FieldNumberOutlined } from '@ant-design/icons';
 
 import ErrorModal from './ErrorModal';
 import TrainTimeline from './TrainTimeline';
+import RealTimeTip from './RealTimeTip';
 
 const { Panel } = Collapse;
 const { Text } = Typography;
 
 const Train = props => {
 	const { train, dataKey } = props;
+
+	const REAL_TIME_INTERVAL = 5000;
+	const interval = useRef(null);
+
 	const [loading, setLoading] = useState(false);
 	const [result, setResult] = useState(null);
 
 	const getRealTimeInfo = () => {
-		setLoading(true);
 		axios
 			.get(process.env.REACT_APP_ENDPOINT + 'trains/' + train.trainid, {
 				params: { origin: train.origin, time: train.time }
@@ -32,13 +36,33 @@ const Train = props => {
 			});
 	};
 
+	const realTimeInterval = () => {
+		return setInterval(() => {
+			getRealTimeInfo();
+		}, REAL_TIME_INTERVAL);
+	};
+
+	const startInterval = () => {
+		interval.current = realTimeInterval();
+	};
+	const stopInterval = () => {
+		clearInterval(interval.current);
+	};
+
 	const onCollapse = key => {
 		if (key.length) {
+			setLoading(true);
 			getRealTimeInfo();
+			startInterval();
 		} else {
 			setResult(null);
+			stopInterval();
 		}
 	};
+
+	useEffect(() => {
+		return () => stopInterval;
+	}, []);
 
 	const info = result ? (
 		<>
@@ -54,6 +78,13 @@ const Train = props => {
 					<Text>-</Text>
 				)}
 			</div>
+			<Divider />
+			<RealTimeTip
+				initValue="true"
+				startInterval={startInterval}
+				stopInterval={stopInterval}
+				time={REAL_TIME_INTERVAL}
+			/>
 			<TrainTimeline stops={result.fermate} keyData={dataKey} stationHandler={props.stationHandler} />
 		</>
 	) : (
