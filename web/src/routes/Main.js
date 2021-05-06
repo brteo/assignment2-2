@@ -94,7 +94,7 @@ const Home = props => {
 				visible={stationVisible}
 				onClose={onCloseStation}
 				mask={false}
-				width={isMobile ? '80%' : '50%'}
+				width={isMobile ? '100%' : '50%'}
 			>
 				{station ? <Station stationId={station.id} /> : ''}
 			</Drawer>

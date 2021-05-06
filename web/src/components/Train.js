@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Collapse, Skeleton, Typography, Divider } from 'antd';
-import { FieldNumberOutlined } from '@ant-design/icons';
 
 import ErrorModal from './ErrorModal';
 import TrainTimeline from './TrainTimeline';
@@ -93,7 +92,7 @@ const Train = props => {
 
 	const title = (
 		<>
-			TRAIN <FieldNumberOutlined /> {train.trainid}
+			{train.acronym} {train.trainid}
 		</>
 	);
 

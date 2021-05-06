@@ -21,8 +21,7 @@ const StationDepartures = props => {
 		{
 			title: 'Destination',
 			dataIndex: 'destinazione',
-			key: 'destinazione',
-			ellipsis: true
+			key: 'destinazione'
 		},
 		{
 			title: 'Time',
@@ -41,7 +40,6 @@ const StationDepartures = props => {
 			title: 'Rail',
 			dataIndex: 'binario',
 			key: 'binario',
-			ellipsis: true,
 			width: '75px'
 		}
 	];

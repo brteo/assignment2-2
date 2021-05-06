@@ -24,6 +24,7 @@ http://localhost:3000/solutions/?from=FANO&to=CESENA&ar=A&date=04/05/2021&time=1
     "trains": [
       {
         "trainidentifier": "Intercity 606",
+        "acronym": "IC",
         "trainid": "606",
         "origin": "S11119",
         "time": "1620252000000"

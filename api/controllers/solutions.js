@@ -14,6 +14,7 @@ const getTrainInfo = async trains => {
 			const s = result.data.split('|').pop();
 			return {
 				trainidentifier: train.trainidentifier,
+				acronym: train.trainacronym,
 				trainid: s.split('-')[0],
 				origin: s.split('-')[1],
 				time: s.split('-')[2].replace('\n', '')
