@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import { Collapse, Skeleton, Typography, Space } from 'antd';
+import { Collapse, Skeleton, Typography } from 'antd';
 import { FieldNumberOutlined } from '@ant-design/icons';
 
 import ErrorModal from './ErrorModal';
@@ -42,16 +42,18 @@ const Train = props => {
 
 	const info = result ? (
 		<>
-			<Space wrap>
-				<Text type="secondary">Ritardo</Text>
+			<div className="mobile-block">
+				<Text type="secondary">Ritardo</Text>&nbsp;
 				<Text type={result.ritardo > 0 ? 'danger' : 'success'}>{result.compRitardo[1]}</Text>
-				<Text type="secondary">Last Detection</Text>
+			</div>
+			<div className="mobile-block margin-left">
+				<Text type="secondary">Last Detection</Text>&nbsp;
 				{result.oraUltimoRilevamento ? (
 					<Text>{moment(result.oraUltimoRilevamento, 'x').fromNow()}</Text>
 				) : (
 					<Text>-</Text>
 				)}
-			</Space>
+			</div>
 			<TrainTimeline stops={result.fermate} keyData={dataKey} />
 		</>
 	) : (

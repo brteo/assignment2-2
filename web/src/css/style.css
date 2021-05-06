@@ -13,6 +13,7 @@
 
 .ant-timeline{margin-top:20px;}
 .ant-timeline-item.ant-timeline-item-last{padding-bottom:0;}
+.mobile-block{display: block;}
 
 @media screen and (min-width: 768px) {
   .ant-layout-header h3{font-size:24px;}
@@ -20,10 +21,12 @@
   .content{padding:20px 30px;}
 
   .card-ribbon{display: block;}
+  .mobile-block{display: inline-block;}
+  .mobile-block.margin-left{margin-left:8px;}
 }
 
 @media screen and (min-width: 996px) {
-
+  
 }
 
 @media screen and (min-width: 1240px) {

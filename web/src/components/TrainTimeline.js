@@ -12,18 +12,26 @@ const TrainTimeline = props => {
 			{stops.map(stop => (
 				<Timeline.Item key={dataKey + ' ' + stop.id} color={stop.partenzaReale ? 'green' : 'gray'}>
 					{stop.partenzaReale ? (
-						<Space wrap>
-							<Tag color="green">{stop.stazione}</Tag>
-							<Text type="secondary">left at</Text>
-							<Moment format="DD/MM HH:mm">{stop.partenzaReale}</Moment>
-							{stop.ritardo > 0 ? <Text type="danger">Delay {stop.ritardo}m</Text> : ''}
-						</Space>
+						<>
+							<div className="mobile-block">
+								<Tag color="green">{stop.stazione}</Tag>
+							</div>
+							<Space wrap>
+								<Text type="secondary">left at</Text>
+								<Moment format="DD/MM HH:mm">{stop.partenzaReale}</Moment>
+								{stop.ritardo > 0 ? <Text type="danger">Delay {stop.ritardo}m</Text> : ''}
+							</Space>
+						</>
 					) : (
-						<Space wrap>
-							<Tag>{stop.stazione}</Tag>
-							<Text type="secondary">leave at</Text>
-							<Moment format="DD/MM HH:mm">{stop.partenzaProgrammata}</Moment>
-						</Space>
+						<>
+							<div className="mobile-block">
+								<Tag>{stop.stazione}</Tag>
+							</div>
+							<Space wrap>
+								<Text type="secondary">leave at</Text>
+								<Moment format="DD/MM HH:mm">{stop.partenzaProgrammata}</Moment>
+							</Space>
+						</>
 					)}
 				</Timeline.Item>
 			))}
