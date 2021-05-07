@@ -73,15 +73,15 @@ http://localhost:3000/trains/606?origin=S11119&time=1620252000000
       "id": "S11119",
       "ritardo": 1,
       "partenzaReale": 1620273360000,
-      "partenzaProgrammata": 1620273360000,
+      "partenza_teorica": 1620273360000,
       ...
     },
     {
       "stazione": "MOLFETTA",
       "id": "S11114",
       "ritardo": 0,
-      "partenzaReale": 1620274380000,
-      "partenzaProgrammata": null,
+      "partenzaReale": null,
+      "partenza_teorica": 1620274380000,
       ...
     },
     ...
