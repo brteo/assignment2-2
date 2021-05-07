@@ -16,7 +16,7 @@ npm i --legacy-peer-deps  # add flag --legacy-peer-deps with npm version > 7.0
 npm i
 ```
 
-3. Start Docker with [Docker Compose](https://docs.docker.com/compose/install/])
+3. Start Docker with [Docker Compose](https://docs.docker.com/compose/install/)
 
 ```sh
 docker-compose up -d

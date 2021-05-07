@@ -68,7 +68,9 @@ const Station = props => {
 	useEffect(() => {
 		setShowDepartures(false);
 		setShowArrivals(false);
+		stopInterval();
 		call();
+		startInterval();
 	}, [stationId]);
 
 	return (

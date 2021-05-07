@@ -37,7 +37,7 @@ const TrainTimeline = props => {
 							</div>
 							<Space wrap>
 								<Text type="secondary">leave at</Text>
-								<Moment format="DD/MM HH:mm">{stop.partenza_teorica}</Moment>
+								<Moment format="DD/MM HH:mm">{stop.programmata ? stop.programmata : stop.partenza_teorica}</Moment>
 							</Space>
 						</>
 					)}
